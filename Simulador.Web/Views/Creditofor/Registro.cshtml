@@ -1,0 +1,74 @@
+﻿
+
+@model List<Simulador.Web.Models.Creditofor>
+@{
+    ViewBag.Title = "Registro";
+}
+
+<h2>Bienvenido a la Simulacion</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Nro.Cuota</th>
+            <th>Abono a intereses</th>
+            <th>Abono a capital</th>
+            <th>Cuota mensual sin seguro</th>  
+            <th>Valor del seguro de vida asociado a la Deuda</th>
+            <th>Cuota mensual más seguros</th>
+            <th>Saldo</th>
+        </tr>
+
+    </thead>
+    <tbody>
+
+        @*@ViewBag.nroCuotas
+            @ViewBag.valorPrestamo
+            @ViewBag.cuotaTasa
+            @ViewBag.valorSeguro
+            @ViewBag.abono
+            @ViewBag.cuotaMensual
+            @ViewBag.abonoCapital
+            @ViewBag.saldo*@
+
+        @{
+
+
+            var ValorPrestamo = @ViewBag.valorPrestamo;
+            var canticuotas = @ViewBag.nroCuotas;
+            var cuotaTasa = @ViewBag.cuotaTasa;
+            var valorSeguro = 24000;
+            double cuotaMensual = @ViewBag.cuotaMensual;
+            int cuotaconSeguro = (int)(cuotaMensual + valorSeguro);
+        }
+
+        @for (int i = 1; i <= @ViewBag.nroCuotas; i++)
+
+        {
+            int Cuotafin = i;
+            double abono = ValorPrestamo * cuotaTasa;
+            double abonoCapital = (int)cuotaMensual - abono;
+            double saldo = ValorPrestamo - abonoCapital;
+
+
+            <tr>
+
+
+                <td>@Cuotafin</td>
+                <td>@Math.Round(abono)</td>
+                <td>@Math.Round(abonoCapital)</td>
+                <td>@Math.Round(cuotaMensual)</td>
+                <td>@valorSeguro</td>
+                <td>@cuotaconSeguro</td>
+                <td>@Math.Round(saldo)</td>
+
+
+            </tr>
+            ValorPrestamo = (int)saldo;
+
+        }
+
+
+    </tbody>
+</table>
+

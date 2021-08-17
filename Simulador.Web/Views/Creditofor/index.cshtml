@@ -1,0 +1,41 @@
+﻿@model Simulador.Web.Models.Creditofor
+@{
+    ViewBag.Title = "index";
+}
+
+<h2>Bienvenido al Simulador de Credito</h2>
+
+<form action="/Creditofor/Registro" method="post">
+
+    <table>
+        @*<label>Valor del Prestamo</label>
+            <input type="number" id="ValorPrestamo" name="ValorPrestamo" /><br>*@
+
+        @Html.DisplayNameFor(m => m.ValorPrestamo)
+        @Html.EditorFor(m => m.ValorPrestamo, new { HtmlAttributes = new { @class = "form-control" } })
+
+
+        @*<label>Plazo en meses</label>
+            <input type="number" id="Plazomeses" name="Plazomeses" /><br>*@
+
+        @Html.DisplayNameFor(m => m.Cuotas)
+        @Html.EditorFor(m => m.Cuotas, new { HtmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(m => m.Cuotas, "", new { @class = "number-danger" })
+
+        <!-- <label>Tasa</label>
+        <input type="text" id="CuotaTasa" name="CuotaTasa" /><br>-->
+        @Html.DisplayNameFor(m => m.CuotaTasa)
+        @Html.EditorFor(m => m.CuotaTasa, new { htmlAttributes = new { @class = "form-control" } })
+
+
+        @* @Html.DisplayNameFor(m => m.ValorSeguro)
+            @Html.EditorFor(m => m.ValorSeguro, new { HtmlAttributes = new { @class = "form-control" } })*@
+
+
+
+    </table>
+
+    <input type="submit" value="Registrar" class="btn btn-primary" />
+
+
+</form>
