@@ -42,7 +42,7 @@
             int cuotaconSeguro = (int)(cuotaMensual + valorSeguro);
         }
 
-        @for (int i = 1; i <= @ViewBag.nroCuotas; i++)
+        @for (int i = 0; i <= @ViewBag.nroCuotas; i++)
 
         {
             int Cuotafin = i;
@@ -55,12 +55,12 @@
 
 
                 <td>@Cuotafin</td>
-                <td>@Math.Round(abono)</td>
-                <td>@Math.Round(abonoCapital)</td>
-                <td>@Math.Round(cuotaMensual)</td>
-                <td>@valorSeguro</td>
+                <td>@Math.Round(abono, 2)</td>
+                <td>@Math.Round(abonoCapital, 2)</td>
+                <td>@Math.Round(cuotaMensual, 2)</td>
+                <td>@valorSeguro </td>
                 <td>@cuotaconSeguro</td>
-                <td>@Math.Round(saldo)</td>
+                <td>@Math.Round(saldo, 2)</td>
 
 
             </tr>
